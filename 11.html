@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>11주차 학습 퀴즈: 코에이의 역사시뮬레이션과 프로파간다</title>
+    <style>
+        /* 전역 초기화 및 Box-Sizing 설정 */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 상단 고정 네비게이션 바 스타일 */
+        .navbar {
+            background-color: #2c3e50;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            padding: 0 20px;
+        }
+        .navbar-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: table;
+            width: 100%;
+        }
+        .navbar-brand {
+            display: table-cell;
+            vertical-align: middle;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 15px 0;
+            width: 30%;
+        }
+        .navbar-menu {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: right;
+            width: 70%;
+        }
+        .navbar-menu a {
+            display: inline-block;
+            color: #bbb;
+            text-decoration: none;
+            padding: 15px 10px;
+            font-size: 0.95em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .navbar-menu a:hover {
+            color: #fff;
+            background-color: #34495e;
+        }
+        .navbar-menu a.active {
+            color: #fff;
+            background-color: #3498db;
+        }
+
+        /* 메인 콘텐츠 컨테이너 */
+        .main-content {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .quiz-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 10px;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+            border-left: 5px solid #2980b9;
+            padding-left: 10px;
+        }
+        .question-block {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #ccc;
+        }
+        .question-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        .answer-box {
+            margin-top: 10px;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        
+        /* 개별 문제 정답 확인 버튼 */
+        .check-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-size: 0.9em;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .check-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        /* 개별 피드백 박스 */
+        .feedback {
+            margin-top: 12px;
+            padding: 12px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #2ecc71;
+            display: none;
+        }
+        .correct-ans {
+            font-weight: bold;
+            color: #27ae60;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .raw-feedback {
+            color: #555;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 상단 네비게이션 바 -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-brand">게임인문학 퀴즈</div>
+        <div class="navbar-menu">
+            <a href="index.html">9주차</a>
+            <a href="10.html">10주차</a>
+            <a href="11.html" class="active">11주차</a>
+            <a href="12.html">12주차</a>
+            <a href="13.html">13주차</a>
+            <a href="14.html">14주차</a>
+            <a href="15.html">15주차</a>
+        </div>
+    </div>
+</nav>
+
+<div class="main-content">
+    <div class="quiz-container">
+        <h1>11주차 학습 퀴즈: 코에이의 역사시뮬레이션과 프로파간다</h1>
+        <p style="text-align: center; color: #666;">각 문제 아래의 '정답 및 해설 보기' 버튼을 눌러 개별적으로 확인할 수 있습니다.</p>
+
+        <h2>I. 단답형 10문제</h2>
+
+        <!-- Q1 -->
+        <div class="question-block">
+            <div class="question-title">Q1. 역사적 사실(Fact)의 기반 위에 개발사의 상상력과 허구적 요소를 재구성하여 결합한 게임 장르를 일컫는 용어는 무엇인가?[span_0](start_span)[span_0](end_span)</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 팩션 (Faction)[span_1](start_span)[span_1](end_span)</span>
+                    <div class="raw-feedback">설명: 코에이는 역사라는 팩트 위에 상상력을 재구성한 팩션 게임을 선보이며 명성을 얻어왔습니다[span_2](start_span)[span_2](end_span).</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="question-block">
+            <div class="question-title">Q2. 어떤 의도를 가지고 대중에게 무언가를 알려서 자신이 원하는 방향으로 생각을 유도하거나 행동을 얻어내는 정치적·이념적 선동 행위를 뜻하는 용어는 무엇인가?[span_3](start_span)[span_3](end_span)</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 프로파간다 (Propaganda)[span_4](start_span)[span_4](end_span)</span>
+                    <div class="raw-feedback">설명: 의도를 가지고 대중에게 주입하여 원하는 목적을 달성하려는 행위로, 나치의 괴벨스가 대표적인 인물입니다[span_5](start_span)[span_5](end_span).</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="question-block">
+            <div class="question-title">Q3. "거짓말은 처음에는 부정되고 그 다음에는 의심받지만, 되풀이하면 결국 모든 대중이 믿게 된다"라는 명언을 남긴 나치 독일의 악명 높은 프로파간다 대가는 누구인가?[span_6](start_span)[span_6](end_span)</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 괴벨스[span_7](start_span)[span_7](end_span)</span>
+                    <div class="raw-feedback">설명: 선전 선동을 통해 대중의 인식을 통제하고 조작했던 나치의 핵심 인물입니다[span_8](start_span)[span_8](end_span).</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="question-block">
+            <div class="question-title">Q4. 코에이(KOEI)의 창업주로, 여장부 아내인 에리카와 케이코의 도움을 받아 마이컴 컴퓨터 한 대로 역사 시뮬레이션 게임의 역사를 바꾼 인물은 누구인가?[span_9](start_span)[span_9](end_span)</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 에리카와 요이치[span_10](start_span)[span_10](end_span)</span>
+                    <div class="raw-feedback">설명: 염색업을 이어받았다가 가내수공업 형태로 게임 개발을 시작하여 역사 시뮬레이션 명가를 세운 창업주입니다[span_11](start_span)[span_11](end_span).</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="question-block">
+            <div class="question-title">Q5. 1983년에 출시되어 대히트를 기록한 코에이의 대표작으로, 유저가 전국시대의 다이묘가 되어 영지를 경영하는 턴제 시스템을 선보이며 코에이 게임의 명확한 방향성을 제시한 이 게임의 제목은 무엇인가?[span_12](start_span)[span_12](end_span)</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 노부나가의 야망[span_13](start_span)[span_13](end_span)</span>
+                    <div class="raw-feedback">설명: 전국시대를 배경으로 영지 경영과 전략을 결합하여 코에이 시뮬레이션의 기반을 닦은 기념비적인 작품입니다[span_14](start_span)[span_14](end_span).</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="question-block">
+            <div class="question-title">Q6. 극우적 시각으로 일본 역사를 다루어 침략을 정당화하고 제국의 잘못을 축소 및 누락했다가, 2020년 문부과학성으로부터 이례적으로 모든 교과서 불합격 판정을 받은 모임이자 교과서 출판사의 이름은 무엇인가?[span_15](start_span)[span_15](end_span)</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 후소샤 (새 역사 교과서를 만드는 모임)[span_16](start_span)[span_16](end_span)</span>
+                    <div class="raw-feedback">설명: 왜곡된 역사 서술로 논란을 빚은 일본의 대표적인 극우 성향 교과서입니다[span_17](start_span)[span_17](end_span).</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="question-block">
+            <div class="question-title">Q7. &lt;대항해시대 4&gt;에 등장하는 조선인 캐릭터 '이화 설'의 묘사에서 드러나듯, 복식 고증 오류로 인해 조선인임에도 불구하고 어느 나라의 복장을 한 채 게임에 등장하여 논란이 되었는가?[span_18](start_span)[span_18](end_span)</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 중국 (또는 중국 복장)[span_19](start_span)[span_19](end_span)</span>
+                    <div class="raw-feedback">설명: 캐릭터 디자인 과정에서 한국 전통 복식이 아닌 중국풍 복장으로 잘못 묘사되어 역사적 고증 부족 및 왜곡 문제를 드러냈습니다[span_20](start_span)[span_20](end_span).</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="question-block">
+            <div class="question-title">Q8. &lt;삼국지 6&gt;의 이벤트 중 고구려가 왜왕의 신상품 사신과 함께 접근해 조공을 바치는 시스템은 고대 일본 역사 왜곡의 핵심인 어느 조정(또는 정권)의 우월주의 시각을 그대로 반영한 것인가?[span_21](start_span)[span_21](end_span)</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 야마토 조정 (또는 야마토 정권)[span_22](start_span)[span_22](end_span)</span>
+                    <div class="raw-feedback">설명: 후소샤 교과서에 기술된 "삼국이 견제한 결과 고구려, 백제, 신라가 야마토 조정에 조공했다"라는 왜곡된 가치관을 게임 이벤트로 연출하여 비판을 받았습니다[span_23](start_span)[span_23](end_span).</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="question-block">
+            <div class="question-title">Q9. 1989년 코에이가 출시한 제2차 세계대전 배경의 시뮬레이션 게임 시리즈로, 일본군 내 대립이나 강제징용, 위안부 관련 왜곡 및 군국주의를 직접 플레이하게 만든다는 점에서 큰 비판을 직면했던 이 게임의 제목은 무엇인가?[span_24](start_span)[span_24](end_span)</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 제독의 결단[span_25](start_span)[span_25](end_span)</span>
+                    <div class="raw-feedback">설명: 태평양 전쟁을 배경으로 일본 군국주의 및 전쟁 범죄 미화 요소가 포함되어 아시아 각국에서 거센 항의를 받았던 게임입니다[span_26](start_span)[span_26](end_span).</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="question-block">
+            <div class="question-title">Q10. 최근 코에이 테크모가 출시한 게임으로, 우익 사상의 창시자로 꼽히는 '요시다 쇼인'을 인게임 영웅으로 매력적이게 등장시켜 군국주의 프로파간다 논란을 다시금 촉발한 작품의 제목은 무엇인가?[span_27](start_span)[span_27](end_span)</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 라이즈 오브 더 로닌 (Rise of the Ronin)[span_28](start_span)[span_28](end_span)</span>
+                    <div class="raw-feedback">설명: 정한론의 기반을 닦은 요시다 쇼인 등을 미화하고 일본의 침략 역사를 정당화하는 우익 프로파간다 성향이 짙게 내포되어 논란이 된 작품입니다[span_29](start_span)[span_29](end_span).</div>
+                </div>
+            </div>
+        </div>
+
+
+        <h2>II. 서술형 3문제</h2>
+
+        <!-- SQ1 -->
+        <div class="question-block">
+            <div class="question-title">SQ1. 코에이가 제작하는 역사 기반 시뮬레이션 게임들의 장점과 단점을 서술하고, 특히 단점 측면에서 유저들이 왜 '정보의 경도'를 경계해야 하는지 기술하시오.[span_30](start_span)[span_30](end_span)</div>
+            <div class="answer-box">
+                <textarea placeholder="의견을 자유롭게 서술하세요" onkeypress="handleEnter(event, this)"></textarea>
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">모범답안 가이드:</span>
+                    <div class="raw-feedback">
+                        <strong>장점:</strong> 역사를 기반으로 한 몰입감 높은 게임 제작에 특화되어 지리적 정보나 인물, 역사적 사건들을 자연스럽게 접할 수 있는 교육 콘텐츠적 요소를 갖추고 있습니다[span_31](start_span)[span_31](end_span).<br>
+                        <strong>단점 및 경계 이유:</strong> 고가의 가격 정책과 반복적인 게임 패턴(사골) 외에도 가장 큰 문제는 개발사(일본)의 주관이나 왜곡된 사관이 개입된 정보를 무비판적으로 수용하게 될 위험입니다[span_32](start_span)[span_32](end_span). 게임 내 인물 능력치 차등이나 역사적 왜곡 이벤트를 지속적으로 플레이하다 보면, 대중이 인지하지 못하는 사이에 특정 국가의 우월주의나 왜곡된 역사적 프로파간다에 동조되어 생각이 경도될 수 있으므로 비판적 시각이 필수적입니다[span_33](start_span)[span_33](end_span).
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SQ2 -->
+        <div class="question-block">
+            <div class="question-title">SQ2. &lt;삼국지&gt; 시리즈에 등장하는 이순신 장군의 능력치 설정 논란 및 &lt;푸른 늑대와 흰 사슴 4&gt;에 등장하는 고려 인물(명종, 김통정)의 열전 왜곡 사례가 보여주는 코에이의 자국 중심적 사관의 한계에 대해 설명하시오.[span_34](start_span)[span_34](end_span)</div>
+            <div class="answer-box">
+                <textarea placeholder="의견을 자유롭게 서술하세요" onkeypress="handleEnter(event, this)"></textarea>
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">모범답안 가이드:</span>
+                    <div class="raw-feedback">
+                        코에이는 임진왜란 당시 이순신 장군에게 대패했던 자국(일본) 무장들의 능력치보다 이순신 장군의 능력치를 낮게 책정하여 자국 영웅을 돋보이게 하려는 한계를 보였습니다[span_35](start_span)[span_35](end_span). 또한 &lt;징기스칸 4&gt;에서 고려의 명종을 군벌을 규합해 쿠데타로 왕위에 오른 인물로 묘사하거나, 삼별초의 김통정이 일본 행청을 방해했다는 식의 잘못된 열전을 수록했습니다[span_36](start_span)[span_36](end_span). 이는 역사적 사실관계를 자국의 이익이나 편향된 극우적 사관(후소샤 교과서 등)에 맞추어 임의로 조작·축소한 결과물로, 동아시아 주변국 유저들에게 왜곡된 역사를 정답처럼 세뇌하려는 프로파간다적 한계를 여실히 드러냅니다[span_37](start_span)[span_37](end_span).
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SQ3 -->
+        <div class="question-block">
+            <div class="question-title">SQ3. 코에이 창업주 에리카와 요이치 회장이 인터뷰에서 밝힌 "자기 자신이 새로운 역사를 만들어가는 가상의 역사를 즐겨주었으면 한다"라는 주장에 대해, 게임 속 군국주의 및 우익 프로파간다(예: 라이즈 오브 더 로닌 등) 요소를 연관 지어 비판적으로 평가하시오.[span_38](start_span)[span_38](end_span)</div>
+            <div class="answer-box">
+                <textarea placeholder="의견을 자유롭게 서술하세요" onkeypress="handleEnter(event, this)"></textarea>
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">모범답안 가이드:</span>
+                    <div class="raw-feedback">
+                        창업주는 게임의 본질이 실제 역사를 그대로 답습하는 것이 아니라 유저가 개입해 가상의 대안 역사를 창조하는 재미에 있다고 정당화합니다[span_39](start_span)[span_39](end_span). 그러나 이러한 '가상 역사의 즐거움'이라는 명분 이면에는 침략의 정당화나 군국주의 미화, 그리고 요시다 쇼인 같은 우익 사상가를 영웅화하는 프로파간다가 교묘히 은폐되어 있습니다[span_40](start_span)[span_40](end_span). 역사학자들의 눈에는 터무니없는 왜곡일지라도 대중적인 문화 상품(게임)을 통해 반복 재생산되면 대중은 이를 단순한 '허구적 재미'로 소비하다가 결국 왜곡된 가치관을 무의식적으로 내면화하게 됩니다[span_41](start_span)[span_41](end_span). 따라서 가상의 자유도를 제공한다는 주장은 자국 중심의 우익 이념 선동을 '문화적 상품'이라는 가면 뒤에 숨겨 정당화하려는 기만적 도구로 변질될 수 있음을 지적해야 합니다[span_42](start_span)[span_42](end_span).
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // 개별 문제의 정답 및 해설을 토글하는 함수
+    function toggleSingleAnswer(button) {
+        var answerBox = button.parentElement;
+        var feedback = answerBox.querySelector('.feedback');
+        
+        if (feedback.style.display === 'block') {
+            feedback.style.display = 'none';
+            button.textContent = "정답 및 해설 보기";
+            button.style.backgroundColor = "#3498db";
+        } else {
+            feedback.style.display = 'block';
+            button.textContent = "정답 및 해설 숨기기";
+            button.style.backgroundColor = "#e74c3c";
+        }
+    }
+
+    // 엔터키 입력 시 개별 퀴즈 답안 피드백 처리
+    function handleEnter(event, inputElement) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            var answerBox = inputElement.parentElement;
+            var checkBtn = answerBox.querySelector('.check-btn');
+            var feedback = answerBox.querySelector('.feedback');
+            
+            if (feedback.style.display !== 'block') {
+                feedback.style.display = 'block';
+                checkBtn.textContent = "정답 및 해설 숨기기";
+                checkBtn.style.backgroundColor = "#e74c3c";
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
