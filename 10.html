@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>10주차 학습 퀴즈: 인간은 선한가 악한가</title>
+    <style>
+        /* 전역 초기화 및 Box-Sizing 설정 */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 상단 고정 네비게이션 바 스타일 */
+        .navbar {
+            background-color: #2c3e50;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            padding: 0 20px;
+        }
+        .navbar-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: table;
+            width: 100%;
+        }
+        .navbar-brand {
+            display: table-cell;
+            vertical-align: middle;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 15px 0;
+            width: 30%;
+        }
+        .navbar-menu {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: right;
+            width: 70%;
+        }
+        .navbar-menu a {
+            display: inline-block;
+            color: #bbb;
+            text-decoration: none;
+            padding: 15px 10px;
+            font-size: 0.95em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .navbar-menu a:hover {
+            color: #fff;
+            background-color: #34495e;
+        }
+        .navbar-menu a.active {
+            color: #fff;
+            background-color: #3498db;
+        }
+
+        /* 메인 콘텐츠 컨테이너 */
+        .main-content {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .quiz-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 10px;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+            border-left: 5px solid #2980b9;
+            padding-left: 10px;
+        }
+        .question-block {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #ccc;
+        }
+        .question-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        .answer-box {
+            margin-top: 10px;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        
+        /* 개별 문제 정답 확인 버튼 */
+        .check-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-size: 0.9em;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .check-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        /* 개별 피드백 박스 */
+        .feedback {
+            margin-top: 12px;
+            padding: 12px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #2ecc71;
+            display: none;
+        }
+        .correct-ans {
+            font-weight: bold;
+            color: #27ae60;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .rationale {
+            color: #555;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-brand">게임인문학 퀴즈</div>
+        <div class="navbar-menu">
+            <a href="index.html">9주차</a>
+            <a href="10.html" class="active">10주차</a>
+            <a href="11.html">11주차</a>
+            <a href="12.html">12주차</a>
+            <a href="13.html">13주차</a>
+            <a href="14.html">14주차</a>
+            <a href="15.html">15주차</a>
+        </div>
+    </div>
+</nav>
+
+<div class="main-content">
+    <div class="quiz-container">
+        <h1>10주차 학습 퀴즈: 인간은 선한가 악한가</h1>
+        <p style="text-align: center; color: #666;">각 문제 아래의 '정답 및 해설 보기' 버튼을 눌러 개별적으로 확인할 수 있습니다.</p>
+
+        <h2>I. 단답형 10문제</h2>
+
+        <div class="question-block">
+            <div class="question-title">Q1. "인간의 본성은 선하다"라고 주장하며, 측은지심, 수오지심, 사양지심, 시비지심의 네 가지 마음(사단)이 누구에게나 존재한다고 강조한 고대 중국의 철학자는 누구인가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 맹자</span>
+                    <div class="rationale">설명: 맹자는 어린아이가 우물에 빠지려는 것을 보면 누구나 깜짝 놀라 구하려는 마음(측은지심)을 예로 들며 성선설을 주장했습니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">Q2. "인간의 본성은 악하며, 선하게 되는 것은 인위적인 노력(偽)의 결과이다"라고 주장하며, 본능적인 욕망을 통제하기 위해 예의와 법도가 필요하다고 강조한 철학자는 누구인가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 순자</span>
+                    <div class="rationale">설명: 순자는 성악설을 주장했으며, 인간이 타고난 이익을 좋아하는 마음을 그대로 두면 쟁탈이 일어나므로 후천적인 교육과 제도가 중요하다고 보았습니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">Q3. 국내 게임 <리니지2>에서 무소불위의 권력과 폭정을 휘두르던 절대 권력자 'DK(드래곤 나이츠) 혈맹'에 맞서, 수많은 일반 유저(내복단)들이 자유를 위해 맞서 싸운 한국 게임 역사상 가장 유명한 전쟁의 명칭은 무엇인가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 바츠해방전쟁</span>
+                    <div class="rationale">설명: 바츠해방전쟁은 거대 혈맹의 압제에 저항하여 수만 명의 민초 유저들이 단결해 승리를 이끌어낸 가상세계 속 민주화 운동의 대표적 사례입니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">Q4. <월드 오브 워크래프트(WOW)>에서 발생한 사건으로, 줄구룹 던전의 보스 '학카르'의 디버프가 대도시로 전파되면서 수많은 캐릭터들이 사망하고 대혼란이 발생했던 가상 전염병 확산 사건의 명칭은 무엇인가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 오염된 피 사건</span>
+                    <div class="rationale">설명: 2005년에 발생한 이 사건은 전염병이 창궐했을 때 격리 지침을 무시하거나, 고의로 병을 퍼뜨리는 등 실제 인간의 다양한 본성과 행동 양식을 그대로 보여주어 학계의 주목을 받았습니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">Q5. <월드 오브 워크래프트>의 오염된 피 사건 당시, 현실의 보건당국이나 전염병 연구가들의 역학 조사 모델과 유사하게 NPC를 치료하거나 감염 지역으로의 이동을 통제하려고 애썼던 일부 유저들의 자발적인 행동을 무엇이라 하는가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="get_rect_answer" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 의료 봉사 / 자발적 방역 행위</span>
+                    <div class="rationale">설명: 게임 내에서 대혼란이 벌어졌을 때 치유 능력을 가진 힐러 유저들이 자발적으로 감염자들을 치료하기 위해 봉사하는 성선설적 측면이 관찰되었습니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">Q6. 반대로, 오염된 피 사건 당시 자신이 전염병에 걸린 상태에서 치료하기보다 일부러 인구가 밀집된 대도시나 저레벨 유저들이 모인 곳으로 이동해 질병을 고의로 퍼뜨렸던 테러리스트적 성향의 유저들을 일컫는 말은 무엇인가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 그리퍼 (Griefer) / 악의적 사용자</span>
+                    <div class="rationale">설명: 타인의 고통이나 시스템의 붕괴를 즐기며 고의로 전염병을 전파시킨 행위자들로, 규제가 없는 가상세계에서 인간의 잠재적 악성이 드러난 사례로 평가받습니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">Q7. 영화 <다크나이트>에서 조커가 시민들이 탄 배와 범죄자들이 탄 배에 각각 폭탄을 설치하고 서로의 기폭장치를 누르도록 강요했던 잔혹한 사회성 실험은 인간의 어떤 심리적 딜레마를 이용한 것인가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 죄수의 딜레마 / 이기주의와 이타주의의 갈등</span>
+                    <div class="rationale">설명: 상대방을 믿지 못하고 나 자신 혹은 내 집단의 생존을 위해 이기적인 선택을 유도하려 한 조커의 인간 불신 실험이었습니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">Q8. 그린(Green)이라는 어린 아들이 소아암(조직구증)에 걸려 투병하다가 끝내 사망하기까지의 과정을 담아낸 인디 게임으로, 부모의 고통과 슬픔, 그리고 신앙 안에서의 희망을 처절하게 풀어내어 2016년 가장 가슴 아픈 게임으로 꼽힌 이 작품의 제목은 무엇인가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: That Dragon, Cancer (그 대장간, 암 / 저 드래곤, 암)</span>
+                    <div class="rationale">설명: 실제 개발자 부부의 실화를 기반으로 만들어졌으며, 암이라는 커다란 괴물(드래곤)에 맞서 싸우는 한 가족의 서사를 담아 유저들에게 극도의 공감과 눈물을 자아냈습니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">Q9. 안드로이드가 대중화된 미래 사회를 배경으로 하여, 기계가 인간성을 점차 획득해가는 과정 속에서 유저가 매 순간 도덕적이고 윤리적인 선택을 내리도록 설계된 인터랙티브 무비 게임의 제목은 무엇인가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 디트로이트: 비컴 휴먼 (Detroit: Become Human)</span>
+                    <div class="rationale">설명: 유저의 사소한 선택 하나하나가 캐릭터들의 생사와 인간성의 증명 여부를 결정짓는 10주차 주요 사례 게임입니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">Q10. <리니지2> 바츠해방전쟁의 중반부, 오랫동안 저항하던 연합군이 패배하여 흩어지자 DK 혈맹이 다시 권력을 잡고 저항군 관련 유저들을 끝까지 찾아내 징벌했던 가혹한 탄압 정치를 무엇이라 부르는가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 공포정치 / 바츠 핏빛 숙청</span>
+                    <div class="rationale">설명: 연합군에 가담했던 유저들의 캐릭터를 철저하게 처단하고 사냥터를 통제하여, 권력을 쥔 인간집단이 보복과 폭압을 어떻게 행사하는지 보여준 사례입니다.</div>
+                </div>
+            </div>
+        </div>
+
+
+        <h2>II. 서술형 3문제</h2>
+
+        <div class="question-block">
+            <div class="question-title">SQ1. <월드 오브 워크래프트>의 '오염된 피 사건'에서 관찰된 유저들의 행동 중, 맹자의 '성선설'을 뒷받침하는 행동 유형과 순자의 '성악설'을 뒷받침하는 행동 유형을 가상세계 속 구체적 사례를 들어 비교 서술하시오.</div>
+            <div class="answer-box">
+                <textarea placeholder="의견을 자유롭게 서술하세요" onkeypress="handleEnter(event, this)"></textarea>
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">모범답안 가이드:</span>
+                    <div class="rationale">
+                        <strong>성선설적 측면:</strong> 전염병 창궐 당시 타인을 치료하기 위해 대도시 안전지대에 상주하며 힐(치유)을 주었던 의료 봉사 유저들과, 감염되지 않은 저레벨 유저들을 대피시키고 마을 진입을 통제하여 피해를 줄이려 했던 이타적 행위에서 인간의 선한 본성을 찾을 수 있습니다.<br>
+                        <strong>성악설적 측면:</strong> 고의로 감염을 유지한 채 대도시나 마을로 텔레포트하여 질병을 확산시키고, 타인의 캐릭터가 죽어 나가는 혼란을 즐겼던 '그리퍼(Griefer)'들의 악의적 방해 행위에서 규제가 사라졌을 때 분출되는 인간의 악한 본성을 엿볼 수 있습니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">SQ2. <리니지2>의 '바츠해방전쟁'은 권력을 가진 거대 혈맹(DK)의 억압에 대항해 수많은 일반 유저들이 '내복단'이라는 이름으로 집결하여 싸운 사건이다. 이 현상이 단순한 게임 플레이를 넘어 어떤 사회인문학적 의미를 가지는지 서술하시오.</div>
+            <div class="answer-box">
+                <textarea placeholder="의견을 자유롭게 서술하세요" onkeypress="handleEnter(event, this)"></textarea>
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">모범답안 가이드:</span>
+                    <div class="rationale">
+                        바츠해방전쟁은 가상공간이라 할지라도 인간 사회의 독점과 독재에 대한 저항, 그리고 '자유와 정의'를 갈망하는 집단적 열망이 현실 세계의 '민주화 운동'이나 '시민 혁명'과 동일한 메커니즘으로 발현될 수 있음을 증명합니다. 저레벨 유저들이 캐릭터 성능의 불리함을 극복하고 연대하여 권력을 전복시킨 과정은 온라인 공동체에서도 고도의 정치·사회적 상호작용과 도덕적 동질감이 형성될 수 있음을 시사합니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">SQ3. 게임 <That Dragon, Cancer>는 암에 걸린 자식을 둔 부모의 시점에서 진행된다. 유저들이 이 게임을 플레이하며 느끼는 고통과 눈물이 '인간성(Humanity)'의 회복과 어떤 연관이 있는지 10주차 강의 주제와 연결 지어 기술하시오.</div>
+            <div class="answer-box">
+                <textarea placeholder="의견을 자유롭게 서술하세요" onkeypress="handleEnter(event, this)"></textarea>
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">모범답안 가이드:</span>
+                    <div class="rationale">
+                        이 게임은 단순한 재미나 카타르시스를 주는 자극적인 콘텐츠가 아니라, 타인의 실제적이고 극심한 고통에 깊이 '공감'하도록 만듭니다. 유저들이 실제 투병기를 경험하며 함께 슬퍼하고 아이를 안아주고 싶어 하는 감정은 맹자가 말한 '측은지심(타인의 불행을 불쌍히 여기는 마음)'의 발현입니다. 이를 통해 게임이 단순한 오락도구를 넘어 인간의 가장 깊은 도덕적 감수성과 이타성을 자극하고 연대하게 만드는 훌륭한 인문학적 매개체가 될 수 있음을 보여줍니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // 개별 문제의 정답 및 해설을 토글하는 함수
+    function toggleSingleAnswer(button) {
+        var answerBox = button.parentElement;
+        var feedback = answerBox.querySelector('.feedback');
+        
+        if (feedback.style.display === 'block') {
+            feedback.style.display = 'none';
+            button.textContent = "정답 및 해설 보기";
+            button.style.backgroundColor = "#3498db";
+        } else {
+            feedback.style.display = 'block';
+            button.textContent = "정답 및 해설 숨기기";
+            button.style.backgroundColor = "#e74c3c";
+        }
+    }
+
+    // 엔터키 입력 시 개별 퀴즈 답안 피드백 처리
+    function handleEnter(event, inputElement) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            var answerBox = inputElement.parentElement;
+            var checkBtn = answerBox.querySelector('.check-btn');
+            var feedback = answerBox.querySelector('.feedback');
+            
+            if (feedback.style.display !== 'block') {
+                feedback.style.display = 'block';
+                checkBtn.textContent = "정답 및 해설 숨기기";
+                checkBtn.style.backgroundColor = "#e74c3c";
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
+
