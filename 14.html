@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>14주차 학습 퀴즈: 미래의 게임과 인문학적 성찰</title>
+    <style>
+        /* 전역 초기화 및 Box-Sizing 설정 */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 상단 고정 네비게이션 바 스타일 */
+        .navbar {
+            background-color: #2c3e50;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            padding: 0 20px;
+        }
+        .navbar-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: table;
+            width: 100%;
+        }
+        .navbar-brand {
+            display: table-cell;
+            vertical-align: middle;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 15px 0;
+            width: 30%;
+        }
+        .navbar-menu {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: right;
+            width: 70%;
+        }
+        .navbar-menu a {
+            display: inline-block;
+            color: #bbb;
+            text-decoration: none;
+            padding: 15px 10px;
+            font-size: 0.95em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .navbar-menu a:hover {
+            color: #fff;
+            background-color: #34495e;
+        }
+        .navbar-menu a.active {
+            color: #fff;
+            background-color: #3498db;
+        }
+
+        /* 메인 콘텐츠 컨테이너 */
+        .main-content {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .quiz-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 10px;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+            border-left: 5px solid #2980b9;
+            padding-left: 10px;
+        }
+        .question-block {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #ccc;
+        }
+        .question-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        .answer-box {
+            margin-top: 10px;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        
+        /* 개별 문제 정답 확인 버튼 */
+        .check-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-size: 0.9em;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .check-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        /* 개별 피드백 박스 */
+        .feedback {
+            margin-top: 12px;
+            padding: 12px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #2ecc71;
+            display: none;
+        }
+        .correct-ans {
+            font-weight: bold;
+            color: #27ae60;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .raw-feedback {
+            color: #555;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 상단 네비게이션 바 -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-brand">게임인문학 퀴즈</div>
+        <div class="navbar-menu">
+            <a href="index.html">9주차</a>
+            <a href="10.html">10주차</a>
+            <a href="11.html">11주차</a>
+            <a href="12.html">12주차</a>
+            <a href="13.html">13주차</a>
+            <a href="14.html" class="active">14주차</a>
+            <a href="15.html">15주차</a>
+        </div>
+    </div>
+</nav>
+
+<div class="main-content">
+    <div class="quiz-container">
+        <h1>14주차 학습 퀴즈: 미래의 게임과 인문학적 성찰</h1>
+        <p style="text-align: center; color: #666;">각 문제 아래의 '정답 및 해설 보기' 버튼을 눌러 개별적으로 확인할 수 있습니다.</p>
+
+        <h2>I. 단답형 5문제</h2>
+
+        <!-- Q1 -->
+        <div class="question-block">
+            <div class="question-title">Q1. 현실 세계와 가상 세계가 융합되어, 그 속에서 사용자가 아바타를 통해 경제, 문화, 사회적 활동을 수행하는 3차원 가상세계를 일컫는 용어는 무엇인가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 메타버스 (Metaverse)</span>
+                    <div class="raw-feedback">설명: 가상을 뜻하는 메타(Meta)와 우주를 뜻하는 유니버스(Universe)의 합성어로, 단순한 게임 공간을 넘어 사회·경제적 활동이 일어나는 플랫폼을 의미합니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="question-block">
+            <div class="question-title">Q2. 게임 내에서 인공지능이나 무작위화 기술을 활용하여, 개발자가 일일이 맵이나 퀘스트를 설계하지 않고도 알고리즘에 의해 무한히 새로운 콘텐츠를 자동 생성해 내는 기법을 무엇이라 하는가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 절차적 생성 (Procedural Generation)</span>
+                    <div class="raw-feedback">설명: &lt;노 맨즈 스카이&gt;나 &lt;마인크래프트&gt; 등에서 적극 활용되는 기술로, 방대한 가상 우주와 지형을 효율적이고 무한하게 만들어낼 수 있는 미래 게임의 핵심 유통·개발 기술 중 하나입니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="question-block">
+            <div class="question-title">Q3. 게임 프로세스를 통해 현실의 고난도 문제를 해결하거나 대중의 참여를 유도하는 현상을 말합니다. 게임이 아닌 분야에 게임의 메커니즘, 사고방식, 구성 요소 등을 도입하는 이 개념은 무엇인가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 게이미피케이션 (Gamification / 게임화)</span>
+                    <div class="raw-feedback">설명: 교육, 헬스케어, 마케팅, 환경 문제 해결 등 다양한 비게임 영역에 도전 과제, 보상 시스템 등 게임적 요소를 접목하여 사용자 동기를 부여하는 기법입니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="question-block">
+            <div class="question-title">Q4. 블록체인 기술을 기반으로 게임 내 자산이나 캐릭터를 고유한 자산으로 증명해 주어, 유저가 게임을 하면서 실제로 수익을 올릴 수 있도록 하는 'Play to Earn' 시스템의 기반이 되는 디지털 자산 형태는 무엇인가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: NFT (대체 불가능 토큰)</span>
+                    <div class="raw-feedback">설명: 게임 속 아이템이나 아바타에 고유한 인식 값을 부여함으로써 유저에게 온전한 디지털 소유권을 보장하고, 현실 경제와 연동할 수 있는 고리를 제공합니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="question-block">
+            <div class="question-title">Q5. 사용자의 뇌파나 신경 신호를 직접 컴퓨터나 게임 기기와 연결하여, 컨트롤러나 키보드 없이 오직 '생각'만으로 가상 세계의 아바타를 조작하는 미래형 인터페이스 기술을 무엇이라 하는가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: BCI (Brain-Computer Interface / 뇌-컴퓨터 인터페이스)</span>
+                    <div class="raw-feedback">설명: 신체적 제약을 극복하고 완전한 몰입감을 제공하기 위해 연구 중인 기술로, 미래 가상현실 및 뉴로 게임(Neuro-game)의 궁극적인 지향점 중 하나입니다.</div>
+                </div>
+            </div>
+        </div>
+
+
+        <h2>II. 서술형 2문제</h2>
+
+        <!-- SQ1 -->
+        <div class="question-block">
+            <div class="question-title">SQ1. 생성형 인공지능(Generative AI)의 발전이 미래 게임 개발 환경의 혁신과 유저 맞춤형 플레이 측면에 어떤 변화를 이끌어낼 수 있을지 서술하시오.</div>
+            <div class="answer-box">
+                <textarea placeholder="의견을 자유롭게 서술하세요" onkeypress="handleEnter(event, this)"></textarea>
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">모범답안 가이드:</span>
+                    <div class="raw-feedback">
+                        생성형 AI는 개발 환경에서 텍스트, 코드, 그래픽 에셋, 배경 음악 등을 실시간으로 생성하여 개발 기간과 비용을 획기적으로 단축시킬 것입니다. 유저 플레이 측면에서는 고정된 스크립트대로만 움직이던 NPC가 유저의 대화와 행동 맥락을 실시간으로 학습하고 이해하여 완전히 살아있는 듯한 독창적인 반응을 제공할 수 있게 됩니다. 이를 통해 모든 유저가 각자의 선택에 따라 저마다 다른 서사와 퀘스트를 경험하는 완벽한 '개인 맞춤형 게임' 시대가 도래할 것으로 기대됩니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SQ2 -->
+        <div class="question-block">
+            <div class="question-title">SQ2. 가상현실(VR)과 몰입 기술이 고도화될수록 게임 속 도덕적 딜레마나 가상 범죄 행위가 유저에게 미치는 영향이 커집니다. 이에 따라 미래의 게임이 단순한 오락을 넘어 왜 윤리적 성찰을 요구하는지 기술하시오.</div>
+            <div class="answer-box">
+                <textarea placeholder="의견을 자유롭게 서술하세요" onkeypress="handleEnter(event, this)"></textarea>
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">모범답안 가이드:</span>
+                    <div class="raw-feedback">
+                        과거 모니터 평면 화면으로 게임을 볼 때는 가상 세계와 현실의 물리적 구분이 명확했습니다. 그러나 완전 몰입형 VR이나 오감 피드백 기술이 도입되면 인간의 뇌는 가상 공간에서의 경험을 단순한 픽셀의 움직임이 아닌 '실제 신체적 체감'으로 받아들이게 됩니다. 따라서 게임 내에서의 폭력, 약탈, 윤리적 파탄 행위가 유저의 정신적 트라우마나 왜곡된 도덕 관념으로 직결될 위험성이 높습니다. 게임이 단순한 오락적 쾌감을 넘어, 가상 세계 속 주체로서 인간 존엄성과 사회적 책임감을 어떻게 유지할 것인가에 대한 깊이 있는 인문학적·윤리적 성찰이 선행되어야 하는 이유가 바로 여기에 있습니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // 개별 문제의 정답 및 해설을 토글하는 함수
+    function toggleSingleAnswer(button) {
+        var answerBox = button.parentElement;
+        var feedback = answerBox.querySelector('.feedback');
+        
+        if (feedback.style.display === 'block') {
+            feedback.style.display = 'none';
+            button.textContent = "정답 및 해설 보기";
+            button.style.backgroundColor = "#3498db";
+        } else {
+            feedback.style.display = 'block';
+            button.textContent = "정답 및 해설 숨기기";
+            button.style.backgroundColor = "#e74c3c";
+        }
+    }
+
+    // 엔터키 입력 시 개별 퀴즈 답안 피드백 처리
+    function handleEnter(event, inputElement) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            var answerBox = inputElement.parentElement;
+            var checkBtn = answerBox.querySelector('.check-btn');
+            var feedback = answerBox.querySelector('.feedback');
+            
+            if (feedback.style.display !== 'block') {
+                feedback.style.display = 'block';
+                checkBtn.textContent = "정답 및 해설 숨기기";
+                checkBtn.style.backgroundColor = "#e74c3c";
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
+
