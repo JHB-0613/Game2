@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>13주차 학습 퀴즈: 시대와 게임</title>
+    <style>
+        /* 전역 초기화 및 Box-Sizing 설정 */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 상단 고정 네비게이션 바 스타일 */
+        .navbar {
+            background-color: #2c3e50;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            padding: 0 20px;
+        }
+        .navbar-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: table;
+            width: 100%;
+        }
+        .navbar-brand {
+            display: table-cell;
+            vertical-align: middle;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 15px 0;
+            width: 30%;
+        }
+        .navbar-menu {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: right;
+            width: 70%;
+        }
+        .navbar-menu a {
+            display: inline-block;
+            color: #bbb;
+            text-decoration: none;
+            padding: 15px 10px;
+            font-size: 0.95em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .navbar-menu a:hover {
+            color: #fff;
+            background-color: #34495e;
+        }
+        .navbar-menu a.active {
+            color: #fff;
+            background-color: #3498db;
+        }
+
+        /* 메인 콘텐츠 컨테이너 */
+        .main-content {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .quiz-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 10px;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+            border-left: 5px solid #2980b9;
+            padding-left: 10px;
+        }
+        .question-block {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #ccc;
+        }
+        .question-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        .answer-box {
+            margin-top: 10px;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        
+        /* 개별 문제 정답 확인 버튼 */
+        .check-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-size: 0.9em;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .check-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        /* 개별 피드백 박스 */
+        .feedback {
+            margin-top: 12px;
+            padding: 12px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #2ecc71;
+            display: none;
+        }
+        .correct-ans {
+            font-weight: bold;
+            color: #27ae60;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .raw-feedback {
+            color: #555;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-brand">게임인문학 퀴즈</div>
+        <div class="navbar-menu">
+            <a href="index.html">9주차</a>
+            <a href="10.html">10주차</a>
+            <a href="11.html">11주차</a>
+            <a href="12.html">12주차</a>
+            <a href="13.html" class="active">13주차</a>
+            <a href="14.html">14주차</a>
+            <a href="15.html">15주차</a>
+        </div>
+    </div>
+</nav>
+
+<div class="main-content">
+    <div class="quiz-container">
+        <h1>13주차 학습 퀴즈: 시대와 게임</h1>
+        <p style="text-align: center; color: #666;">각 문제 아래의 '정답 및 해설 보기' 버튼을 눌러 개별적으로 확인할 수 있습니다.</p>
+
+        <h2>I. 단답형 10문제</h2>
+
+        <div class="question-block">
+            <div class="question-title">Q1. 과거 게임을 단순한 '애들 장난'이나 유해한 것으로 보던 시각에서 벗어나, 지역별 특성에 맞는 규제 특례를 적용하여 지자체 스스로 특화 개발을 추진하도록 성남시 판교권역에 지정 추진된 이것의 법적 명칭은 무엇인가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 지역특화발전특구 (또는 판교 게임ㆍ콘텐츠 문화특구)</span>
+                    <div class="raw-feedback">설명: 지역경제 발전을 목적으로 규제 완화 혜택을 주는 제도로, 판교가 게임 산업의 첨단 미래먹거리 기지로 공인받았음을 보여줍니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">Q2. 네오위즈가 개발하여 글로벌 시장에서 큰 성공을 거둔 소울라이크 장르의 게임으로, 고전 동화 피노키오를 잔혹 동화 콘셉트로 재해석하여 한국 PC/콘솔 게임의 저력을 입증한 이 작품의 제목은 무엇인가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: P의 거짓 (Lies of P)</span>
+                    <div class="raw-feedback">설명: 모바일 중심의 한국 게임 시장에서 글로벌 콘솔 시장의 문을 두드려 대성공을 거둔 13주차 주요 사례 작품입니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">Q3. 게임 속에 투영된 시대상을 설명할 때 인용된 개념으로, 르네 지라르가 주장한 이론에 따르면 인간은 자율적인 욕망을 갖는 것이 아니라 언제나 '타인의 욕망'을 비추어 보며 이것을 따라 하려 한다고 한다. 이 이론의 명칭은 무엇인가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 모방욕망 이론 (또는 욕망의 모방)</span>
+                    <div class="raw-feedback">설명: 인간은 타인이 욕망하는 대상을 모방하여 욕망하려는 속성이 있으며, 이는 가상세계 속 경쟁과 소비 패턴에도 큰 영향을 미칩니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">Q4. 자본주의가 고도화되면서 현대인들은 노동을 통해 자아를 실현하기보다 물질적인 소유와 재화를 구매하여 과시하는 행위를 통해 자신의 정체성을 규정하려는 경향을 보인다. 이 현상을 뜻하는 철학 및 사회학적 용어는 무엇인가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 소비사회</span>
+                    <div class="raw-feedback">설명: 장 보드리야르 등이 정립한 개념으로, 현대 사회가 생산 중심에서 소비 중심으로 이동했음을 보여주는 표현입니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">Q5. 2011년 독일의 사상가 울리히 벡이 제시한 개념으로, 현대 사회는 자본과 문명의 발전 이면에 기후변화, 원전 사고, 전염병 등 예측 불가능하고 통제하기 힘든 거대한 위협들을 상시 마주하고 있다는 이론의 명칭은 무엇인가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 위험사회 (Risk Society)</span>
+                    <div class="raw-feedback">설명: 성장에 가려진 부작용들이 언제든 공멸의 위기를 초래할 수 있다는 현대 사회의 불안정성을 경고한 이론입니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">Q6. 빙하기가 도래하여 영하 수십 도의 혹한 속에서 생존자들을 이끌고 증기기관 발전기를 돌리며 법과 제도를 정비해야 하는, '위험사회'의 극한을 시뮬레이션한 생존 경영 게임의 제목은 무엇인가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 프로스트펑크 (Frostpunk)</span>
+                    <div class="raw-feedback">설명: 한정된 자원 속에서 공동체의 생존을 위해 아동 노동, 시체 처리 등 인간 존엄과 효율성 사이의 가혹한 선택을 강요하는 명작입니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">Q7. 통제 불가능한 자연재해와 인재의 결합을 보여주는 실제 역사적 사건으로, 2011년 지진해일(쓰나미) 여파로 전력 공급이 중단되면서 노심용융이 발생해 오늘날까지 전 세계적 환경 오염의 불씨가 된 이 참사의 명칭은 무엇인가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 후쿠시마 원전 사고 (또는 후쿠시마 원전 참사)</span>
+                    <div class="raw-feedback">설명: 문명의 고도화된 이기가 인류를 집어삼키는 재앙으로 돌변할 수 있음을 증명한 울리히 벡의 위험사회 대표 사례입니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">Q8. 전염병 확산과 포스트 아포칼립스 세계관을 다룬 13주차 강의 자료 핵심 사례작으로, 균류 전염병으로 무너진 세상에서 생존하는 인간들의 처절한 드라마를 그려 극찬을 받은 소니의 독점작 게임 제목은 무엇인가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 더 라스트 오브 어스 (The Last of Us)</span>
+                    <div class="raw-feedback">설명: 동충하초균의 변이로 인류 대부분이 괴물로 변한 절망적인 위험사회 속에서 피어나는 인간성의 명암을 다룬 서사 중심의 게임입니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">Q9. 강의 자료 후반부 통계 수치에 등장하는 경제적 변화 요인으로, 최근 한국 사회의 급격한 인구 구조 변화를 대변하며 게임 시장에서 혼자 즐기는 문화 및 패러다임의 변화를 이끈 가구 형태의 명칭은 무엇인가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 1인 가구</span>
+                    <div class="raw-feedback">설명: 통계청 자료에 나타나듯 1인 가구 비율이 급격하게 늘어남에 따라 다인 공동체 문화에서 개인 중심의 문화 및 게임 소비 형태로 시대가 변화하고 있습니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">Q10. "현실의 반영으로서 게임은 단순한 가상공간을 넘어, 우리가 직면한 시대적 갈등과 위기를 시뮬레이션한다"라는 관점에서 볼 때, 강의 자료의 핵심 논지인 '게임은 사회적 변화와 기술이 결합한 이것의 결과물'에서 빈칸에 들어갈 단어는 무엇인가?</div>
+            <div class="answer-box">
+                <input type="text" placeholder="정답을 입력하세요" onkeypress="handleEnter(event, this)">
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">정답: 시대상 (또는 시대적 산물)</span>
+                    <div class="raw-feedback">설명: 게임은 하늘에서 뚝 떨어진 오락거리가 아니라, 그 시대 유저들의 불안, 욕망, 가족 구조 및 사회적 환경을 오롯이 담아내는 거울입니다.</div>
+                </div>
+            </div>
+        </div>
+
+
+        <h2>II. 서술형 3문제</h2>
+
+        <div class="question-block">
+            <div class="question-title">SQ1. 장 보드리야르의 '소비사회' 이론과 르네 지라르의 '모방욕망 이론'을 엮어서, 현대 유저들이 대형 MMORPG 게임에서 고가의 유료 아이템이나 희귀 스킨을 획득하고자 엄청난 비용을 지출하는 이유를 비판적으로 서술하시오.</div>
+            <div class="answer-box">
+                <textarea placeholder="의견을 자유롭게 서술하세요" onkeypress="handleEnter(event, this)"></textarea>
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">모범답안 가이드:</span>
+                    <div class="raw-feedback">
+                        현대 사회는 필요한 물건을 생산하고 소비하는 단계를 넘어, 상품의 '기호(이미지)'를 소비하는 소비사회입니다. 지라르의 이론에 따르면 인간은 타인이 가진 가치 있는 것을 모방하여 욕망하려는 특성이 있습니다. 게임 안에서 랭커나 다른 유저들이 선망하는 고가의 아이템, 외형 스킨은 단순한 능력치 향상 도구가 아니라 가상세계 속 '우월한 계급과 정체성'을 나타내는 기호로 작동합니다. 유저들은 자신의 자율적 필요가 아니라 타인의 부러움과 욕망을 모방하여 이를 소유하고자 과소비를 실천하게 되며, 이는 현대 자본주의 소비사회의 과시적 상호작용이 가상공간에 고스란히 복제되어 나타나는 현상입니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">SQ2. 울리히 벡이 주장한 '위험사회'의 관점에서 게임 &lt;프로스트펑크&gt;가 유저에게 던지는 도덕적 딜레마와 사회적 메시지가 현실의 기후변화나 팬데믹 상황과 어떻게 맞닿아 있는지 서술하시오.</div>
+            <div class="answer-box">
+                <textarea placeholder="의견을 자유롭게 서술하세요" onkeypress="handleEnter(event, this)"></textarea>
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">모범답안 가이드:</span>
+                    <div class="raw-feedback">
+                        위험사회 이론은 현대 문명이 고도화될수록 인류가 통제할 수 없는 전 지구적 재앙(기후변화, 감염병 등)에 상시 노출됨을 경고합니다. &lt;프로스트펑크&gt;는 혹한이라는 예측 불허의 위기 속에서 공동체의 생존을 위해 '인간 존엄성 사수'와 '생존 효율성 극대화' 사이의 가혹한 선택을 강요합니다. 이는 현실의 팬데믹 상황에서 국가가 방역(생존)을 위해 개인의 자유를 어디까지 통제할 수 있는지, 혹은 기후 위기 앞에 약소국과 노동 계층의 희생을 강요하는 신자유주의적 위기대응 방식과 일맥상통합니다. 게임은 가상의 극단적 시뮬레이션을 통해 효율성만을 좇다가 인간성을 상실한 사회가 과연 존속할 가치가 있는지 묻는 묵직한 사회적 메시지를 던집니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">SQ3. 13주차 강의 자료 말미에 제시된 대한민국 '1인 가구 비율 추이 및 출생 성비' 등의 인구통계학적 변화가 향후 게임 개발 방향 및 유저들의 플레이 환경(예: 멀티플레이 위주에서 싱글/패키지 중심 혹은 방치형 게임 등)에 어떠한 변화를 줄지 본인의 견해를 시대상과 연결 지어 논술하시오.</div>
+            <div class="answer-box">
+                <textarea placeholder="의견을 자유롭게 서술하세요" onkeypress="handleEnter(event, this)"></textarea>
+                <button class="check-btn" onclick="toggleSingleAnswer(this)">정답 및 해설 보기</button>
+                <div class="feedback">
+                    <span class="correct-ans">모범답안 가이드:</span>
+                    <div class="raw-feedback">
+                        통계 자료에 나타난 1인 가구의 폭발적인 증가와 저출생 현상은 공동체 중심의 여가 문화가 철저히 개인화되고 있음을 보여줍니다. 과거 대가족 혹은 다인 가구 체제 아래 PC방에 모여 단체로 경쟁하던 대형 MMORPG나 멀티플레이 게임 중심의 생태계에서, 이제는 혼자만의 시간과 고독을 밀도 있게 소비할 수 있는 고품질 싱글 패키지 게임(&lt;P의 거짓&gt;, &lt;더 라스트 오브 어스&gt; 등)이나 시공간의 제약 없이 가볍게 즐기는 내러티브 중심, 혹은 방치형 모바일 게임으로 수요가 다변화될 것입니다. 파편화된 개인들이 가상공간 속 깊이 있는 이야기 구조에 몰입해 위안을 얻고자 하는 흐름은, 인구 구조의 고독화라는 시대상을 고스란히 투영한 필연적인 패러다임 시프트라고 평가할 수 있습니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // 개별 문제의 정답 및 해설을 토글하는 함수
+    function toggleSingleAnswer(button) {
+        var answerBox = button.parentElement;
+        var feedback = answerBox.querySelector('.feedback');
+        
+        if (feedback.style.display === 'block') {
+            feedback.style.display = 'none';
+            button.textContent = "정답 및 해설 보기";
+            button.style.backgroundColor = "#3498db";
+        } else {
+            feedback.style.display = 'block';
+            button.textContent = "정답 및 해설 숨기기";
+            button.style.backgroundColor = "#e74c3c";
+        }
+    }
+
+    // 엔터키 입력 시 개별 퀴즈 답안 피드백 처리
+    function handleEnter(event, inputElement) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            var answerBox = inputElement.parentElement;
+            var checkBtn = answerBox.querySelector('.check-btn');
+            var feedback = answerBox.querySelector('.feedback');
+            
+            if (feedback.style.display !== 'block') {
+                feedback.style.display = 'block';
+                checkBtn.textContent = "정답 및 해설 숨기기";
+                checkBtn.style.backgroundColor = "#e74c3c";
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
+
